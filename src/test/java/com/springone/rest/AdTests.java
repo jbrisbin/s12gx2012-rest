@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ApplicationConfig.class })
@@ -20,6 +21,8 @@ public class AdTests {
 
 	@Autowired
 	private AdRepository ads;
+	@Autowired
+	private CampaignRepository campaigns;
 	@Autowired
 	private ApplicationContext appCtx;
 
@@ -34,6 +37,15 @@ public class AdTests {
 
 		assertThat(activeAds, is(notNullValue()));
 		assertThat(activeAds.size(), greaterThan(0));
+	}
+
+	@Test
+	@Transactional
+	public void testCampaignHasAds() {
+		Campaign campaign = campaigns.findAll().iterator().next();
+		List<Ad> ads = campaign.getAds();
+
+		assertThat(ads.size(), greaterThan(0));
 	}
 
 }
