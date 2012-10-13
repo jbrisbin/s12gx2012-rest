@@ -1,11 +1,12 @@
 package com.springone.rest;
 
 import java.io.Serializable;
-import java.lang.Boolean;
-import java.lang.String;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Entity implementation class for Entity: Campaign
@@ -25,6 +26,13 @@ public class Campaign implements Serializable {
 	private List<Ad> ads;
 
 	public Campaign() {
+	}
+
+	public Campaign(String name, Boolean active, List<Ad> ads) {
+		super();
+		this.name = name;
+		this.active = active;
+		this.ads = ads;
 	}
 
 	public Long getId() {
@@ -53,6 +61,11 @@ public class Campaign implements Serializable {
 
 	public void setAds(List<Ad> ads) {
 		this.ads = ads;
+	}
+
+	@Override
+	public String toString() {
+		return "Campaign [id=" + id + ", name=" + name + ", active=" + active + ", ads=" + ads + "]";
 	}
 
 }

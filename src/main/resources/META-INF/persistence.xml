@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
-	<persistence-unit name="adserver" transaction-type="RESOURCE_LOCAL">
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"	version="2.0">
+	<persistence-unit name="adcampaign">
 		<class>com.springone.rest.Ad</class>
+		<class>com.springone.rest.Campaign</class>
 		<properties>
+			<!--
 			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
 			<property name="hibernate.connection.url" value="jdbc:hsqldb:mem:spring" />
 			<property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver" />
 			<property name="hibernate.connection.username" value="sa" />
 			<property name="hibernate.connection.password" value="" />
+			-->
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:spring"></property>
-			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"></property>
-			<property name="javax.persistence.jdbc.user" value="sa"></property>
 		</properties>
 	</persistence-unit>
 </persistence>
